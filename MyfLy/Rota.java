@@ -1,9 +1,8 @@
 
 package myfly;
 
-public class Rota {
-    
-    private CiaAerea cia;
+public class Rota implements Comparable<Rota> {
+	private CiaAerea cia;
 	private Aeroporto origem;
 	private Aeroporto destino;
 	private Aeronave aeronave;
@@ -29,5 +28,17 @@ public class Rota {
 	
 	public Aeronave getAeronave() {
 		return aeronave;
+	}
+
+    @Override
+    public String toString() {
+        return cia.getCodigo() + " - " + origem.getCodigo() + " -> " + destino.getCodigo()
+                + " ("  + aeronave.getCodigo() + ")";
+    }
+
+	@Override
+	public int compareTo(Rota rota) {
+		return this.cia.getNome().compareTo(
+				rota.cia.getNome());
 	}
 }
